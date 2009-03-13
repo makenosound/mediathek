@@ -6,8 +6,8 @@
 		
 			return array(
 				'name' => 'Field: Mediathek',
-				'version' => '1.1.2',
-				'release-date' => '2009-03-05',
+				'version' => '1.1.3',
+				'release-date' => '2009-03-13',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://www.nilshoerrmann.de',
