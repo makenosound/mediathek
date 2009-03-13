@@ -29,7 +29,7 @@ Requirements: Symphony 2.0
 
 [CHANGE LOG]
 
-Version 1.1.2 - 13th March 2009
+Version 1.1.3 - 13th March 2009
 
 - [fixed]   fetch correct id after creating new entry
 - [fixed]   invisible preview link
