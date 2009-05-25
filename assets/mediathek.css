@@ -201,6 +201,7 @@ div.media .mediasection {
 	border: none;
 	padding: 0 1em;
 	margin: 0;
+	clear: both;
 	background: url(loading.gif) 50% no-repeat;
 }
 
@@ -212,82 +213,3 @@ div.media .mediasection iframe {
 	padding: 0;
 	overflow: hidden;
 }
-
-
-
-
-/*
-
-div.media {
-	margin-bottom: 1.75em;
-	border: 1px solid #999988;
-	background: #CCCCBB;
-	position: relative;
-}
-
-div.media a {
-	display: block;
-	padding: 0.5em 1em;
-	background: #CCCCBB;
-	border-bottom: 1px solid #E7E7E3;
-	color: #555544;
-}
-
-
-div.media a.create {
-	padding: 0;
-	margin: 0.55em 1em;
-	position: absolute;
-	top: 0;
-	right: 56px;
-	overflow: hidden;
-	text-indent: -1000em;
-	width: 66px;
-	height: 15px;
-	text-decoration: none;
-	border: none;
-}
-
-div.media a.create {
-	background: #999988 url(create.png) 0 0 no-repeat;
-}
-
-div.media.open a.create {
-	background: #81B934 url(create.png) 0 0 no-repeat;
-}
-
-div.media a.search {
-	padding: 0;
-	margin: 0.55em 1em;
-	position: absolute;
-	top: 0;
-	right: 0;
-	overflow: hidden;
-	text-indent: -1000em;
-	width: 46px;
-	height: 15px;
-	text-decoration: none;
-	border: none;
-}
-
-div.media a.search {
-	background: #999988 url(search.png) 0 0 no-repeat;
-}
-
-label.media .mediasearch {
-	border: none;
-	padding: 0 1em;
-	margin: 0;
-}
-
-label.media .mediasearch form {
-	background: none;
-	margin: 1em 0 0 0;
-	overflow: hidden;
-	padding: 0;
-	position: relative;
-	width: 100%;
-}
-
-
-*/
