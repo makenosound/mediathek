@@ -1,215 +1,280 @@
-/** 
-*	MEDIATHEK for Symphony 2.0
-*
-*	author:		Nils Hörrmann
-*	contact:	post@nilshoerrmann.de
-*	website:	www.nilshoerrmann.de
-*	version:	1.0
-*	date:		January 2009
-*/
-
-
-label.media {
-	padding-right: 0 !important;
-	margin-bottom: 0;
+/*
+ * MEDIATHEK Extension
+ * for Symphony CMS
+ *
+ * @author: Nils Hörrmann, post@nilshoerrmann.de
+ * @source: http://github.com/nilshoerrmann/mediathek
+ * @version: 2.0
+ */
+ 
+ .field-mediathek {
+	position: relative;
+	margin-bottom: 1.75em;
 }
 
-div.media {
-	margin: 0 0 1.75em 0;
-	border: 1px solid #999988;
-	background: #CCCCBB;
-	position: relative;
+.field-mediathek label {
+	margin: 0 0 2px 0;
+}
+
+.field-mediathek select {
 	display: none;
 }
 
-div.media div.actions {
-	padding: 3px 0 4px 0;
-	margin: 0;
-	border-top: none;
-	border-bottom: 1px solid #E7E7E3;
-}
-
-div.media div.actions a {
-	float: left;
-	padding: 4px 0 0 1em;
-	background: #CCCCBB;
-	color: #555544;
-	position: relative;
-	z-index: 100;
-}
-
-div.media div.actions p {
-	padding: 0 1.4em 0 98px;
-	margin: 0 77px 0 0;
-	position: relative;
-}
-
-div.media div.actions p input {
-	width: 100%;
-	margin: 0;
-	float: none;
-	font-size: 109.09%;
-	padding: 1px 0;
-	position: relative;
-}
-
-div.media div.actions p a {
-	background: url(search.png) right top no-repeat;
-	right: 1em;
-	top: 4px;
-	position: absolute;
-	text-indent: -1000em;
-	overflow: hidden;
-	width: 17px;
-}
-
-div.media div.actions p a.active {
-	background: url(search-active.png) right top no-repeat;
-}
-
-div.media ul {
-	clear: both;
-}
-
-div.media ul {
-	background-color: #F5F5F3;
+.field-mediathek ul {
+	border-top: 1px solid #C2C2C2;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	border-bottom: 1px solid #C2C2C2;
 	list-style: none;
-	padding: 0;
 	margin: 0;
 	overflow: auto;
- 	max-height: 30em;
+	width: 100%;
 }
 
-div.media li {
-	border-bottom: 1px solid #E6E6E5;
-	padding: 0 6em 0 1em;
-	position: relative;
-	cursor: move;
+.field-mediathek ul.closed {
 	overflow: hidden;
-	height: auto;
 }
 
-div.media.open li.active {
-	background: #5273C0 !important;
-	border-color:#617DC5 !important;
+.field-mediathek li {
+	border-bottom: 1px solid #E6E6E5;
+	background-color: #fff;
+	color: #000;
+	position: relative;
 }
 
-div.media.open li.even {
-	background: #fff;
-}
-
-
-div.media li.active {
-	background: transparent !important;
-}
-
-div.media li.zebra  {
-	background: #fff !important;
-}
-
-div.media li span {
-	padding: 0.67em 0;
-	display: block;
-	border: none;
-	background: transparent;
-	margin: 0;
-	text-align: left;
-}
-
-div.media.open li.active span {
-	color: #fff;
-}
-
-div.media li a {
-	cursor: pointer;
-	position: absolute;
-	top: 0.67em;
-	right: 1em;
-	padding: 0 0 0 17px;
-	border: none;
-	color: #5072BF;
-	z-index: 1000;
-	background: none;
-}
-
-div.media.open li.active a {
-	color: #fff;
-}
-
-div.media li img {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	padding: 5px;
-	background: #fff;
-	width: 65px;
-	height: 65px;
-	z-index: 2000;
-	border: 1px solid #E6E6E5;
-}
-
-div.media.open li.active img {
-	background: transparent;
-	border: 1px solid #5c85ea;
-}
-
-div.drag {
-	background: #232320;
-	border: 0;
-	position: absolute;
-	color: #555544;
-	padding: 0.67em 6em 0.67em 1em;
+.field-mediathek ul.closed li {
 	cursor: move;
-	text-decoration: none;
+}
+
+.field-mediathek li.odd {
+	background-color: #F5F5F4;	
+}
+
+.field-mediathek ul.open li {
+	cursor: pointer;
+}
+
+.field-mediathek ul.open li.selected {
+	background-color: #5273C0;
+	border-bottom: 1px solid #617DC5;
+	color: #fff;
+}
+
+.field-mediathek li span {
+	padding: 0.67em  0.67em 0.67em 19px;
+	display: block;	
+}
+
+.field-mediathek i {
 	z-index: 1000;
+	top: -2px;
+	right: 5px;
 }
 
-div.drag a, div.drag a:hover {
+.field-mediathek i a {
+	color: #AAAA99;
+	cursor: pointer;
 	text-decoration: none;
-	color: #5072BF;
+	float: left;
+	display: block;
+	padding: 2px 8px 0 8px;
+	border: 1px solid transparent;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
 }
 
-div.drag span {
+.field-mediathek i a:hover {
+	border-top: 1px solid #C2C2C2;
+	border-left: 1px solid #C2C2C2;
+	border-right: 1px solid #C2C2C2;
+	background-color: #F9F9F9;
+	color: #64645A;
+}
+
+.field-mediathek i a.active {
+	border-top: 1px solid #C2C2C2;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	border-bottom: 3px solid rgb(230, 230, 229);
+	background-color: rgb(230, 230, 229);
+	color: #5F5F5F;
+}
+
+.field-mediathek label.search {
+	border-top: 1px solid #C2C2C2;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	background-color: rgb(230, 230, 229);
+	margin: 0;
+	padding: 0.4em 0 0.5em 0;
+	width: 100%;
+}
+
+.field-mediathek label.search input {
+	border: 1px solid #C2C2C2;
+	-moz-border-radius: 10px;
+	-moz-box-shadow: inset 1px 1px 1px #454545;
+	-moz-box-sizing: border-box;
+	height: 20px;
+	padding: 3px 0 0 9px;
+	margin: 0 2%;
+	color: #777;
+	width: 96%;
+	font-size: 1em;
+}
+
+.field-mediathek label.search input:focus {
+	color: #000;
+}
+
+.field-mediathek li.empty {
+	padding: 0;
+	color: #AAAA99;
+	border-bottom: 1px solid #E6E6E5;
+	cursor: auto;
+}
+
+.placeholder {
+	background-color: #FFFEBA !important;
+	border-bottom:  1px solid #FFE9A7;
+	cursor: move;
+}
+
+.field-mediathek li a.attachment {
+	position: absolute;
+	right: 10px;
+	top: 6px;
+	background: url(attachment0.png) right center no-repeat;
+	width: 18px;
+	height: 18px;
+	text-indent: -1000em;
+}
+
+.field-mediathek li a.attachment:hover {
+	background: url(attachment1.png) right center no-repeat;
+}
+
+.field-mediathek .open li.selected a.attachment {
+	background: url(attachment0s.png) right center no-repeat;
+}
+
+.field-mediathek .open li.selected a.attachment:hover {
+	background: url(attachment1s.png) right center no-repeat;
+}
+
+.preview {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
+	border-top: 1px solid #C2C2C2;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	border-bottom: 1px solid #C2C2C2;
+	margin: 0;
+}
+
+.preview .close {
+	background: url(close0.png) 0 0 no-repeat;
+	width: 18px;
+	height: 18px;
 	position: absolute;
 	top: 0.67em;
-	right: 1em;
-}
-
-div.media div.actions a.create {
-	padding: 0;
-	margin: 0.55em 1em;
-	position: absolute;
-	top: 1px;
-	right: 0;
+	right: 0.67em;
 	overflow: hidden;
 	text-indent: -1000em;
-	width: 66px;
-	height: 15px;
-	text-decoration: none;
-	border: none;
 }
 
-div.media div.actions a.create {
-	background: #999988 url(create.png) 0 0 no-repeat;
+.preview .close:hover {
+	background: url(close1.png) 0 0 no-repeat;
 }
 
-div.media div.actions a.create.open {
-	background: #81B934 url(create.png) 0 0 no-repeat;
-}
-
-div.media .mediasection {
-	border: none;
-	padding: 0 1em;
-	margin: 0;
-	clear: both;
-	background: url(loading.gif) 50% no-repeat;
-}
-
-div.media .mediasection iframe {
+.preview p {
+	color: #fff;
+	text-align: center;
+	font-size: 127.28%;
+	text-shadow: -1px 2px 3px #454444;
+	position: absolute;
+	bottom: 0;
 	width: 100%;
-	border: none;
-	position: relative;
-	margin: 0;
-	padding: 0;
+}
+
+.preview p a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.preview p a:hover span {
+	text-decoration: underline;
+}
+
+.preview p a span {
+	font-size: 78.5%;
+}
+
+.preview a.file {
+	background: url(file.png) center top no-repeat;
+	width: 100%;
+	height: 80px;
+	display: block;
+	margin: 10px 0 0 0;
+	text-align: center;
+	padding: 135px 0 0 0;
+	opacity: 1;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 200%;
+	letter-spacing: 0.2;
+	text-shadow: -1px 2px 3px #e2e2e2;
+	color: #d6d6c7;
+}
+
+.preview a.image {
+	width: 90%;
+	text-align: center;
+	margin: 30px 5% 0 5%;
 	overflow: hidden;
+	height: 195px;
+	display: block;
+}
+
+.preview a.image img {
+	border: 1px solid #bcbcbc;
+	box-shadow: -1px 2px 3px #454444;
+}
+
+div.overlay {
+	background: #353530 url(drop.png) center no-repeat;
+	opacity: 0.8;
+	color: fff;
+	border:  1px solid #000;
+}
+
+li.move {
+	background-color: #353530;
+	border: 1px solid #fff;
+	color: #fff;;
+	padding: 0;
+	opacity: 0;
+}
+
+li.move a.attachment {
+	background: url(attachment1.png) right center no-repeat;
+}
+
+.field-mediathek div.create {
+	border-top: 1px solid #C2C2C2;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	background: rgb(230, 230, 229) url(loading.gif) center no-repeat;
+	width: 100%;
+}
+
+.field-mediathek div.create iframe {
+	height: 60px;
+	margin: 0 3%;
+	width: 94%;
+	border: none;
+	background: #fff;
 }

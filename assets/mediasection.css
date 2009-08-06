@@ -1,13 +1,19 @@
-body {
-	background: #CCCCBB;
+/*
+ * MEDIATHEK Extension
+ * for Symphony CMS
+ *
+ * @author: Nils Hörrmann, post@nilshoerrmann.de
+ * @source: http://github.com/nilshoerrmann/mediathek
+ * @version: 2.0
+ */
+
+body.mediasection {
+	background: rgb(230, 230, 229);
 	overflow: hidden;
+	border: none;
 }
 
-h1, h2, #nav, #usr {
-	display: none !important;
-}
-
-form {
+body.mediasection form {
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -15,41 +21,43 @@ form {
 	top: 0;
 	bottom: 0;
 	overflow: hidden;
+	border: none;
 }
 
-form fieldset {
+body.mediasection form fieldset {
 	float: none !important;
 	width: 100% !important;
-	border-bottom: 1px solid #E7E7E3 !important;
+	border: 1px solid transpareant;
+	border-bottom: 1px solid #F5F5F4 !important;
 	margin: 1em 0;
 	padding: 0;
 }
 
-fieldset input {
+body.mediasection fieldset input {
 	width: 100%;
 }
 
-form input.button {
+body.mediasection form input.button {
 	width: auto;
 }
 
-form label span {
+body.mediasection form label span {
 	border: 1px solid #b4b5a3;
-	background: #e6e6d7;
+	background: #F5F5F4;
 }
 
-form .actions {
+body.mediasection form .actions {
 	border: none;
 	padding: 0;
 	margin: 0;
 	height: 4em;
 }
 
-#notice {
+body.mediasection #notice {
 	display: none;
 }
 
-#notice.success, #notice.error {
+body.mediasection #notice.success, #notice.error {
 	display: block;
 	margin: 1em 0 0 0 !important;
 	padding: 0.2em 1em !important;
