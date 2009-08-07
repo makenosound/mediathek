@@ -15,32 +15,32 @@ Mediathek is the German word for media center. It is an enhancement of a select 
 
 ### Features: Settings
 
-*Label:* Title of the field
-*Placement:* Location of the field (main content or sidebar)
-*Related section:* Section to be linked to the current one
-*Allow selected of multiple options:* Switch between single or multiple select mode
-*Filter items by tags or categorie:* A comma separated list of tags or categories that should be used to filter the output. A minus sign excludes a tag or category.
-*Custom item caption:* Template to be used to build the text that represents the linked entries in the Mediathek.
-*Included elements:* List of all fields that should be included in the data source output.
+- *Label:* Title of the field
+- *Placement:* Location of the field (main content or sidebar)
+- *Related section:* Section to be linked to the current one
+- *Allow selected of multiple options:* Switch between single or multiple select mode
+- *Filter items by tags or categorie:* A comma separated list of tags or categories that should be used to filter the output. A minus sign excludes a tag or category.
+- *Custom item caption:* Template to be used to build the text that represents the linked entries in the Mediathek.
+- *Included elements:* List of all fields that should be included in the data source output.
 
 ### Features: Closed Mediathek
 
 A closed Mediathek will only show selectec items.
 
-*dragging:* Dragging items up and down will reorder the Mediathek. This order will be respected in the data source output. Note: You have to save changes to apply your ordering.
-*drag and drop:* Dragging items outside the Mediathek allows you to drop the item into any given textarea. Images will be inserted as image tags, files will be inserted as links (The markup will respect your selected text-formatter. Currently supported are Mardown, Textile and plain HTML). Note: Drag and drop is only available for items with files attached.
-*preview:* Images and files can be previewed. A small plus icon indicates a conneted file and toggles the preview. 
-*unselect:* Doubleclick an item to unselect it.
+- *dragging:* Dragging items up and down will reorder the Mediathek. This order will be respected in the data source output. Note: You have to save changes to apply your ordering.
+- *drag and drop:* Dragging items outside the Mediathek allows you to drop the item into any given textarea. Images will be inserted as image tags, files will be inserted as links (The markup will respect your selected text-formatter. Currently supported are Mardown, Textile and plain HTML). Note: Drag and drop is only available for items with files attached.
+- *preview:* Images and files can be previewed. A small plus icon indicates a conneted file and toggles the preview. 
+- *unselect:* Doubleclick an item to unselect it.
 
 
 ### Features: Opened Mediathek
 
 An opened Mediathek will show all items of the related section depending on the given filter values. Items will be sorted alphabetically, selected items will be highlighted. Click edit to open and close the Mediathek.
 
-*select:* Click an item to select it.
-*unselect:* Click a selected item to unselect it.
-*preview:* Same behaviour as in opened mode.
-*search:* Type a term into the search field. Searching will start automatically.
+- *select:* Click an item to select it.
+- *unselect:* Click a selected item to unselect it.
+- *preview:* Same behaviour as in opened mode.
+- *search:* Type a term into the search field. Searching will start automatically.
 
 ### Features: Create New
 
