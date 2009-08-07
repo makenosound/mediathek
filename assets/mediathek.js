@@ -319,7 +319,7 @@ var Mediathek;
 							this.value = this.value.substring(0, start) + formattedText + this.value.substring(end, this.value.length);
 						}
 						else {
-							this.value += text;
+							this.value += formattedText;
 						}
 						this.selectionStart = start + formattedText.length;
 						this.selectionEnd = start + formattedText.length;
