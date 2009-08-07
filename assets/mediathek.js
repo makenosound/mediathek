@@ -59,6 +59,7 @@ var Mediathek;
 						if(opt.attr('selected') == true) item.addClass('selected');
 						item.html(captions[opt.val()]).attr('title', opt.val()).appendTo(list);
 					});
+					list.find('li.empty').remove();
 					// livesearch
 					list.prev('label.search').find('input').liveUpdate(list);			
 					// close Mediathek
@@ -71,6 +72,7 @@ var Mediathek;
 						if(opt.attr('selected') == true) item.addClass('selected');
 						item.html('<span>' + opt.text() + '</span>').attr('title', opt.val()).appendTo(list);
 					});
+					list.find('li.empty').remove();
 					// livesearch
 					list.prev('label.search').find('input').liveUpdate(list);			
 					// close Mediathek
@@ -89,8 +91,10 @@ var Mediathek;
 					}
 				}
 			});
-			list.find('ul.closed li').live('dblclick', function(event) {
-				Mediathek.unselect(select, $(this), multiple);
+			list.find('li').live('dblclick', function(event) {
+				if(list.hasClass('closed') && list.prev('.preview').size() == 0) {
+					Mediathek.unselect(select, $(this), multiple);
+				}
 			});
 			list.find('a.attachment').live('click', function(event) {
 				event.preventDefault();
@@ -389,19 +393,20 @@ var Mediathek;
 		},
 		
 		unselect: function(select, item, multiple) {
-			if(multiple) {	
-				select.find('option[value=' + item.attr('title') + ']').removeAttr('selected');
-				if(item.parent('ul').hasClass('closed')) {
-					item.slideUp(250, function() {
-						item.removeClass('selected');
-					});
-					this.zebra(item.siblings('li.selected'));
-				}
-				else {
-					item.removeClass('selected');		
-				}
-				this.updateSort(item.parent('ul'), item.attr('title'), 0);
+			var list = item.parent('ul');
+			select.find('option[value=' + item.attr('title') + ']').removeAttr('selected');
+			if(list.hasClass('closed')) {
+				item.slideUp(250, function() {
+					item.removeClass('selected');
+					// handle empty Mediathek
+					if(list.find('li.selected').size() == 0 && list.find('li.empty:visible').size() == 0) $('<li class="empty"><span>' + Mediathek.language.EMPTY + '</span></li>').appendTo(list).slideDown(250);
+				});
+				this.zebra(item.siblings('li.selected'));
 			}
+			else {
+				item.removeClass('selected');		
+			}
+			this.updateSort(item.parent('ul'), item.attr('title'), 0);
 		},
 		
 		customSort: function(list) {
