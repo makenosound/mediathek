@@ -14,7 +14,6 @@
 //		$('select.mediathek option:selected').each(function() {
 //			fieldToggle($(this).parent());
 //		});
-		$('.template .group input').live('focus', function() { console.log('hey'); });
 		$('select.mediathek').each(function() {
 			fieldToggle(this);
 		});
@@ -28,9 +27,9 @@
 	
 	// show and hide suggestion lists
 	function fieldToggle(select) {
-		var select = $(select);
-			id = select.val(),
-			mediathek = select.parents('li').filter('li');
+		var $select = $(select);
+			id = $select.val();
+			mediathek = $select.parents('li').filter('li');
 			groups = mediathek.find('select.datasource optgroup');
 			filter = mediathek.find('ul.negation.section' + id);
 			
