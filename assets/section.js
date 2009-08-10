@@ -27,10 +27,10 @@
 	
 	// show and hide suggestion lists
 	function fieldToggle(select) {
-		var $select = $(select);
-			id = $select.val();
-			mediathek = $select.parents('li').filter('li');
-			groups = mediathek.find('select.datasource optgroup');
+		var $select = $(select),
+			id = $select.val(),
+			mediathek = $select.parents('li').filter('li'),
+			groups = mediathek.find('select.datasource optgroup'),
 			filter = mediathek.find('ul.negation.section' + id);
 			
 		// reset mediathek height
