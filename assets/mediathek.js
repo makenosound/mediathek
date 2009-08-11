@@ -163,7 +163,7 @@ var Mediathek;
 						var item = $(this).parent('li');
 						var select = item.parents('.field-mediathek').find('select');
 						var multiple = select.attr('multiple');
-						Mediathek.select(select, item, multiple);
+						if(!item.hasClass('selected')) Mediathek.select(select, item, multiple);
 					});
 				});
 			});
