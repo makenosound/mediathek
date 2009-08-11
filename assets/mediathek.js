@@ -41,7 +41,7 @@ var Mediathek;
 			label.after(list);
 			// get captions
 			var items = [];
-			select.find('option').each(function() {
+			select.find('option:not([value=-1])').each(function() {
 				items.push($(this).val());
 			});
 			$.ajax({
@@ -54,7 +54,7 @@ var Mediathek;
 					items: items.join(',')
 				},
 				success: function(captions){
-					select.children('option').each(function() {
+					select.children('option:not([value=-1])').each(function() {
 						var opt = $(this);
 						var item = $('<li></li>');
 						if(opt.attr('selected') == true) item.addClass('selected');
@@ -411,6 +411,7 @@ var Mediathek;
 			if(list.hasClass('closed')) {
 				item.slideDown(250);
 				list.find('li.empty').slideUp(250);
+				this.zebra(item.siblings('li.selected').andSelf());
 			}
 		},
 		
@@ -418,11 +419,16 @@ var Mediathek;
 			var list = item.parent('ul');
 			select.find('option[value=' + item.attr('title') + ']').removeAttr('selected');
 			if(list.hasClass('closed')) {
-				item.slideUp(250, function() {
-					item.removeClass('selected');
-					// handle empty Mediathek
-					if(list.find('li.selected').size() == 0 && list.find('li.empty:visible').size() == 0) $('<li class="empty"><span>' + Mediathek.language.EMPTY + '</span></li>').appendTo(list).slideDown(250);
-				});
+				// handle empty Mediathek
+				if(list.find('li.selected').size() == 1 && list.find('li.empty:visible').size() == 0) {
+					$('<li class="empty"><span>' + Mediathek.language.EMPTY + '</span></li>').appendTo(list);
+					item.removeClass('selected').slideUp(0);
+				}
+				else {
+					item.slideUp(250, function() {
+						item.removeClass('selected');
+					});				
+				}
 				this.zebra(item.siblings('li.selected'));
 			}
 			else {

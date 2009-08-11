@@ -267,7 +267,10 @@
 			$this->_engine->Page->addStylesheetToHead(URL . '/extensions/mediathek/assets/mediathek.css', 'screen', 103, false);	
 
 			// prepare select options
-			$options = array();	
+			$options = array();
+			if($this->get('allow_multiple_selection') == 'no') {
+				$options[] = array(-1, false, __('None Selected'));
+			}
 			if(!is_array($data['relation_id'])) {
 				$data['relation_id'] = array($data['relation_id']);
 			}		
