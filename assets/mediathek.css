@@ -65,6 +65,25 @@
 	display: block;	
 }
 
+.field-mediathek li em {
+	font-style: normal; 
+	color: rgb(95, 95, 95);
+}
+
+.field-mediathek ul.open li.selected em {
+	color: #93a8d7;
+}
+
+.field-mediathek ul.closed li strong {
+	font-weight: bold;
+	color: #000;
+}
+
+.field-mediathek ul.open li strong {
+	font-weight: bold;
+	color: #fff;
+}
+
 .field-mediathek i {
 	z-index: 1000;
 	top: -2px;
