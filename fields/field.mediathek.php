@@ -356,7 +356,16 @@
 			$label->appendChild($select);
 			
 			// setup sorting
-			$input = Widget::Input('fields[sort_order][' . $this->get('id') . ']', $this->get('sort_order'), 'hidden');
+			$currentPageURL = $this->_Parent->_Parent->_Parent->getCurrentPageURL();
+			preg_match_all('/\d+/', $currentPageURL, $entry_id, PREG_PATTERN_ORDER);
+			$entry_id = $entry_id[0][count($entry_id[0])-1];
+			$order = Administration::instance()->Database->fetchVar('order', 0,
+				"SELECT `order` 
+				FROM `sym_fields_mediathek_sorting` 
+				WHERE `entry_id` = " . $entry_id . "
+				LIMIT 1"
+			);
+			$input = Widget::Input('fields[sort_order][' . $entry_id . ']', $order, 'hidden');
 			$label->appendChild($input);
 			
 			// setup relation id
@@ -451,16 +460,16 @@
 
 			// sort entries
 			$sorted_entries = explode(',', $this->get('sort_order'));
+			$entries_sorted = array();
 			if(!empty($sorted_entries)) {
-				$entries_sorted = array();
-					foreach($sorted_entries as $id) {
-						foreach($entries as $entry) {
-							if($entry->get('id') == $id) {
-								$entries_sorted[] = $entry;
-							}
+				foreach($sorted_entries as $id) {
+					foreach($entries as $entry) {
+						if($entry->get('id') == $id) {
+							$entries_sorted[] = $entry;
 						}
 					}
 				}
+			}
 			else {
 				$entries_sorted = $entries;
 			}
