@@ -124,7 +124,7 @@
 			
 			// caption input
 			$label = new XMLElement('label', __('Custom item caption') . '<i>' . __('Use <code>{$param}</code> syntax, inline HTML elements allowed') . '</i>');
-			$label->appendChild(Widget::Input('fields['.$this->get('sortorder').'][caption]', $this->get('caption')));
+			$label->appendChild(Widget::Input('fields['.$this->get('sortorder').'][caption]', htmlspecialchars($this->get('caption'))));
 			if(isset($errors['caption'])) {
 				$wrapper->appendChild(Widget::wrapFormElementWithError($label, $errors['caption']));
 			}
