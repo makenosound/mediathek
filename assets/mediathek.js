@@ -24,6 +24,7 @@ var Mediathek;
 
 		// settings
 		settings = $.extend({
+			autodiscover: false,
 			buttons: [
 				{ text: Mediathek.language.EDIT, callback: 'open' },
 				{ text: Mediathek.language.CREATE, callback: 'create' }
@@ -64,6 +65,8 @@ var Mediathek;
 					list.prev('label.search').find('input').liveUpdate(list);			
 					// close Mediathek
 					Mediathek.close(list.prev('i').find('a:first-child'), list, 0);
+					// autodiscovery
+					if(settings.autodiscover == true) Mediathek.autodiscover();
 				},
 				error: function() {
 					select.children('option').each(function() {
@@ -149,6 +152,21 @@ var Mediathek;
 			RESET: 'Reset',
 			RESETENTRY: 'Reset this entry',
 			SEARCH: 'type and search',
+		},
+		
+		autodiscover: function() {
+			$('textarea').each(function() {
+				var text = $(this).text();
+				var links = text.match(/workspace[^ .]*.[a-z0-9_]{3,4}/gi);
+				$.each(links, function() {
+					$('a.attachment[href=' + Symphony.WEBSITE + '/' + this + ']').each(function() {
+						var item = $(this).parent('li');
+						var select = item.parents('.field-mediathek').find('select');
+						var multiple = select.attr('multiple');
+						Mediathek.select(select, item, multiple);
+					});
+				});
+			});
 		},
 		
 		toggle: function(switcher) {
@@ -390,6 +408,10 @@ var Mediathek;
 			}
 			select.find('option[value=' + item.attr('title') + ']').attr('selected', true);
 			item.addClass('selected');
+			if(list.hasClass('closed')) {
+				item.slideDown(250);
+				list.find('li.empty').slideUp(250);
+			}
 		},
 		
 		unselect: function(select, item, multiple) {
