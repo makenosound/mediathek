@@ -543,12 +543,12 @@
 		}
 		
  		/**
-		 * Sample markup for the event editor!
+		 * Returns sample markup for the event editor.
 		 */
 		
 		public function getExampleFormMarkup(){
 			// nothing to show here yet
-			return true;
+			return Widget::Select('fields['.$this->get('element_name').']', array(array('...')));
 		}
 
 	}
