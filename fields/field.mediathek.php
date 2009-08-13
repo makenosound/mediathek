@@ -359,7 +359,7 @@
 			$label->appendChild($select);
 			
 			// setup sorting
-			$currentPageURL = $this->_Parent->_Parent->_Parent->getCurrentPageURL();
+			$currentPageURL = Administration::instance()->getCurrentPageURL();
 			preg_match_all('/\d+/', $currentPageURL, $entry_id, PREG_PATTERN_ORDER);
 			$entry_id = $entry_id[0][count($entry_id[0])-1];
 			$order = Administration::instance()->Database->fetchVar('order', 0,
@@ -462,24 +462,30 @@
 			$entries = $entryManager->fetch($data['relation_id'], $this->get('related_section_id'));
 
 			// sort entries
-			$sorted_entries = explode(',', $this->get('sort_order'));
-			$entries_sorted = array();
-			if(!empty($sorted_entries)) {
-				foreach($sorted_entries as $id) {
+			$order = $this->_Parent->_Parent->Database->fetchVar('order', 0,
+				"SELECT `order` 
+				FROM `sym_fields_mediathek_sorting` 
+				WHERE `entry_id` = " . $wrapper->getAttribute('id') . "
+				LIMIT 1"
+			);		
+			$sorted_ids = explode(',', $order);
+			$sorted_entries = array();
+			if(!empty($sorted_ids)) {
+				foreach($sorted_ids as $id) {
 					foreach($entries as $entry) {
 						if($entry->get('id') == $id) {
-							$entries_sorted[] = $entry;
+							$sorted_entries[] = $entry;
 						}
 					}
 				}
 			}
 			else {
-				$entries_sorted = $entries;
+				$sorted_entries = $entries;
 			}
 	
 			// build XML			
 			$count = 1;
-			foreach($entries_sorted as $entry) {
+			foreach($sorted_entries as $entry) {
 				// fetch entry data
 				$entry_data = $entry->getData();
 			
