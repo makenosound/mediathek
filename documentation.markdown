@@ -16,14 +16,31 @@ Mediathek is the German word for media center. It is an enhancement of a select 
 
 ### Installation
 
-#### Manual 
+#### Manual Installation
 
 Download, unpacking, uploading, enabeling ...
 
-#### Via GitHub
+1. Upload the mediathek folder in this archive to your Symphony extensions folder.
+2. Enable it by selecting Field: Mediathek, choose enable from the with-selected menu, then click apply.
+3. You can now add the Mediathek field to your sections.
+
+#### Via Git
 
 GitHub procedure
-        
+
+### Updating
+
+#### Manual Update
+
+**Please do always make a backup before updating your extensions!**
+
+1. Deleted the old "mediathek" folder in your Symphony "extensions" folder and replace it with the new one in this archive.
+2. Update your database by enabling the "Field: Mediathek" under "Extensions" in your Symphony backend (see installation, section 2).
+
+Be aware that due to some changes in the data source output (see change log) your XSL templates will need some tender love and care.
+
+#### Via Git
+      
 ### Configuration
 
 #### Label
