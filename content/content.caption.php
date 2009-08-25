@@ -65,7 +65,7 @@
 					}
 					$caption = str_replace('{$' . $field_name . '}', $field_value, $caption);
 					// get file
-					if($field->get('type') == 'upload' && !empty($entry_data[$field->get('id')]['file'])) {
+					if(strpos($field->get('type'), 'upload') !== false && !empty($entry_data[$field->get('id')]['file'])) {
 						$file = $this->buildAttachment($entry_data[$field->get('id')]['file']);
 					}
 				}
