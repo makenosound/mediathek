@@ -455,7 +455,15 @@
 		public function appendFormattedElement(&$wrapper, $data, $encode = false) {
 
 			// create Mediathek element
-			$mediathek = new XMLElement($this->get('element_name'));			
+			$mediathek = new XMLElement($this->get('element_name'));
+			
+			// check for included fields
+			if($this->get('included_fields') == '') {
+				$error = new XMLElement('error', 'No fields for output defined.');
+				$mediathek->appendChild($error);
+				$wrapper->appendChild($mediathek);
+				return;
+			}
 
 			// fetch field data
 			$entryManager = new EntryManager($this->_engine);
