@@ -492,7 +492,7 @@ var Mediathek;
 			var link = href.split('/workspace/')[1];
 			var ext = href.split('.');
 			var img = eval("(" + attachment.attr('name') + ")");
-			if(img['jit'] == 1) {
+			if(img['jit'] == 1 || img['height'] == 0 || img['width'] == 0) {
 				width = Math.floor(175 / img['height'] * img['width']);
 				var file = '<a class="image" href="' + href + '"><img src="' + Symphony.WEBSITE + '/image/1/' + width + '/175/' + link + '" width="' + width + '" height="175" alt="' + text + '" /></a>';
 			}

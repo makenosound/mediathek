@@ -20,9 +20,6 @@
 			$related_section_id = intval($_POST['related_section_id']);
 			$field_id = intval($_POST['field_id']);
 			$items = explode(',', $_POST['items']);
-			//$related_section_id = 11;
-			//$field_id = 69;
-			//$items = explode(',', '105,127,128,129,130,131,132,133,134,135,136,139,140,141,142,143,144');
 			$id = array();
 			foreach($items as $item) {
 				array_push($id, intval($item));
@@ -92,7 +89,9 @@
 			if(in_array($ext, array('.png', '.jpg', 'jpeg', '.gif'))) {
 				$size = getimagesize($href);
 				$width = $size[0];
+				if(empty($width)) $width = '0';
 				$height = $size[1];
+				if(empty($height)) $height = '0';
 				$class = 'image';
 				$status = $this->_Parent->Database->fetchVar('status', 0, "SELECT `status` FROM `tbl_extensions` WHERE `name` = 'jit_image_manipulation' LIMIT 1");
 				if($status == 'enabled') {
