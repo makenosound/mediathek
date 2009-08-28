@@ -364,7 +364,7 @@
 			$entry_id = $entry_id[0][count($entry_id[0])-1];
 			$order = Administration::instance()->Database->fetchVar('order', 0,
 				"SELECT `order` 
-				FROM `sym_fields_mediathek_sorting` 
+				FROM `tbl_fields_mediathek_sorting` 
 				WHERE `entry_id` = " . $entry_id . "
 				LIMIT 1"
 			);
@@ -472,7 +472,7 @@
 			// sort entries
 			$order = $this->_Parent->_Parent->Database->fetchVar('order', 0,
 				"SELECT `order` 
-				FROM `sym_fields_mediathek_sorting` 
+				FROM `tbl_fields_mediathek_sorting` 
 				WHERE `entry_id` = " . $wrapper->getAttribute('id') . "
 				LIMIT 1"
 			);		
