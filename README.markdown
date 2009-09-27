@@ -1,20 +1,26 @@
-# Mediathek (unstable)
-
-- Version: 2.0 beta
-- Date: 6th August 2009
-- Author: Nils Hörrmann, post@nilshoerrmann.de
-- Repository: <http://github.com/nilshoerrmann/mediathek/tree/master>
-- Requirements: 
-  - Symphony CMS 2.0.6 or newer, <http://github.com/symphony/symphony-2/tree/master>
-  - JIT Image Manipulation (for image previews), <http://github.com/pointybeard/jit_image_manipulation/tree/master>
-
-### About
+# Mediathek
 
 Mediathek is the German word for media center. It is an enhancement of a select box field that links entries between sections focussing on connecting media to articles.
 
+- Version: 2.0
+- Date: 27th September 2009
+- Author: Nils Hörrmann, post@nilshoerrmann.de
+- Repository: <http://github.com/nilshoerrmann/mediathek/tree/master>
+- Requirements: Symphony CMS 2.0.6 or newer, <http://github.com/symphony/symphony-2/tree/master>
+- Optional Requirement: JIT Image Manipulation (for image previews), <http://github.com/pointybeard/jit_image_manipulation/tree/master>
+
+This extension contains the following languages:
+
+- English (default)
+- German
+
+### Documentation
+
+For further assistence please have a look at the documentation in the `documentation` folder.
+
 ### Change Log
 
-Version 2.0 - 6th August 2009
+Version 2.0 - 27th September 2009
 
 - complete rewrite of the extension using jQuery, which is now part of the Symphony core.
 
@@ -51,4 +57,4 @@ Version 1.0 - 11th January 2009
 
 ### Credits
 
-(do to)
+This extension was originally based on the core select box field created by the Symphony team, Alistair Kearney, Allen Chang, Scott Hughes. Thanks to all extension developers for inspirations.
