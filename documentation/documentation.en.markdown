@@ -1,22 +1,22 @@
 # Documentation: Mediathek
 
-Mediathek is the German word for media center. It is an enhancement of a select box field that links entries between sections focussing on connecting media to articles.
+Mediathek is the German word for media center. It is an enhancement of a normal select box field -- which links entries between sections -- that focuses on connecting media to article-like entries.
 
 * [Mediathek Extension](http://github.com/nilshoerrmann/mediathek/)
 
 ### Known Issues
 
-1. If you have been using one of the early beta of this extensions you are not able to upgrade to this release. You will have to uninstall the extension, upload all new files and then start again from scratch. Sorry about that!
-2. There have been a lot of changes to the field's database structure. If you are comming from version 1.x please do -- as always -- make a backup of your database _before_ uploading any of the new files and starting the update process.
-3. If you update from an earlier version please be aware that the XML output of the extension changed and that you will have to edit your XSL templates.
-4. If there are any Java Script error in the backend (thrown by this or any other extension), Mediathek will not show previews and custom captions. All Java Script related Mediathek features will stop working.
+1. If you have been using one of the early beta versions of this extension you cannot upgrade to this release. You will have to uninstall the extension, upload all new files and then start again from scratch. Sorry about that!
+2. There have been a lot of changes to the field's database structure. If you are coming from version 1.x please do -- as always -- make a backup of your database _before_ uploading any of the new files and starting the update process.
+3. If you update from an earlier version, please be aware that the XML output of the extension changed and that you will have to edit your XSL templates.
+4. If there are any Java Script errorss in the backend (thrown by this or any other extension), Mediathek will not show previews and custom captions. All Java Script–related Mediathek features will stop working.
 
 
 ### Dependencies
 
-This extension has been developed for Symphony CMS version 2.0.6. It won't work in older versions due to the lack of jQuery support. If you want to use Mediathek in older Symphony version, please download version 1.3 of the extension which is availabel on GitHub.
+This extension has been developed for Symphony CMS version 2.0.6. It won't work in older versions due to the lack of jQuery support. If you want to use Mediathek in an older Symphony version, please download version 1.3 of the extension (available on GitHub).
 
-If you like to use the image preview feature of this extension you need to install the [JIT image manipulation extension](http://github.com/pointybeard/jit_image_manipulation/). Install the [extension](http://github.com/pointybeard/jit_image_manipulation/) in the `extensions` directory. This is an optional feature.
+If you would like to use the image preview feature of this extension you need to install the [JIT image manipulation extension](http://github.com/pointybeard/jit_image_manipulation/). Install the [extension](http://github.com/pointybeard/jit_image_manipulation/) in the `extensions` directory. This is an optional feature.
 
     extensions/jit_image_manipulation
 
@@ -52,22 +52,31 @@ Section to be linked to the current one.
 
 Switch between single or multiple select mode.
 
-#### Filter items by tags or categorie:
+#### Filter items by tags or category:
 
-A comma separated list of tags or categories that should be used to filter the output. A minus sign excludes a tag or category.
+A comma-separated list of tags or categories that is used to filter the output. A minus sign excludes a tag or category.
 
 #### Custom item caption
 
-Template to be used to build the text that represents the linked entries in the Mediathek.
+Template used to build the text that represents the linked entries in the Mediathek panel.
 
 #### Included elements
 
-List of all fields that should be included in the data source output. Due to the current admin interface it is not possible to specify this directly in the data source manager.
+List of all fields to be included in the data source output. Due to the current admin interface it is not possible to specify this directly in the data source manager.
 
 
 ### Usage
 
-Mediathek has two interface states: open and closed panel. By default the panel is closed.
+Mediathek has two interface states: open panel and closed panel. By default the panel is closed.
+
+#### Open panel
+
+An open Mediathek will show all items from the related section depending on the given filter values. Items will be sorted alphabetically, and selected items will be highlighted. Click edit to open and close the Mediathek.
+
+- *select:* Click an item to select it.
+- *unselect:* Click a selected item to unselect it.
+- *preview:* Same behaviour as in open mode.
+- *search:* Type a term into the search field. Searching will start automatically.
 
 #### Closed panel
 
@@ -75,21 +84,12 @@ A closed Mediathek will only show selected items.
 
 - *dragging:* Dragging items up and down will reorder the Mediathek. This order will be respected in the data source output. Note: You have to save changes to apply your ordering.
 - *drag and drop:* Dragging items outside the Mediathek allows you to drop the item into any given textarea. Images will be inserted as image tags, files will be inserted as links (The markup will respect your selected text-formatter. Currently supported are Markdown, Textile and plain HTML). Note: Drag and drop is only available for items with files attached.
-- *preview:* Images and files can be previewed. A small plus icon indicates a conneted file and toggles the preview. 
-- *unselect:* Doubleclick an item to unselect it.
-
-#### Opened panel
-
-An opened Mediathek will show all items of the related section depending on the given filter values. Items will be sorted alphabetically, selected items will be highlighted. Click edit to open and close the Mediathek.
-
-- *select:* Click an item to select it.
-- *unselect:* Click a selected item to unselect it.
-- *preview:* Same behaviour as in opened mode.
-- *search:* Type a term into the search field. Searching will start automatically.
+- *preview:* Images and files can be previewed. A small plus icon indicates a connected file and toggles the preview. 
+- *unselect:* Double-click an item to unselect it.
 
 #### Create new Items
 
-Click the create new tab to add a new item. Newly created items will be marked as selected automatically.
+Click the Create New tab to add a new item. Newly created items will be marked as selected automatically.
 
 #### Drag and Drop Items
 
@@ -141,10 +141,10 @@ You can discuss this extension in the Symphony forum: <http://symphony-cms.com/c
 
 ### Bug reports
 
-If you think you found a bug, please consult the Symphony forum first and see if the problem has been discussed or solved. If you can't find anything, please post a bug report at <http://github.com/nilshoerrmann/mediathek/issues/> providing the following information:
+If you think you've found a bug, please consult the Symphony forum first and see if the problem has been discussed or solved. If you can't find anything, please post a bug report at <http://github.com/nilshoerrmann/mediathek/issues/> providing the following information:
 
 - A description of your problem. Please be precise: What's the problem? When does is occur? How can it be reproduced?
 - Your Symphony version number.
 - Your Mediathek version number.
-- Errors and warnings in your activity log.
-- Errors in your Java Script console.
+- Any errors and warnings in your activity log.
+- Any errors in your Java Script console.
