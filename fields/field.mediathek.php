@@ -281,6 +281,7 @@
 		  	$fields = $section->fetchFields();
 		  	
 		  	// fetch taglist, select and upload fields
+		  	$tag_fields = array();
 			foreach($fields as $field) {
 				if(in_array($field->get('type'), array('taglist', 'select'))) {
 					$tag_fields[] = $field->get('id');
