@@ -24,12 +24,12 @@ If you like to use the image preview feature of this extension you need to insta
 
 JIT image manipulation can be installed with Git by cloning the GitHub repositories:
 
-cd extensions
-git clone git://github.com/pointybeard/jit_image_manipulation.git
+	cd extensions
+	git clone git://github.com/pointybeard/jit_image_manipulation.git
 
 Or install it as submodule:
 
-git submodule add git://github.com/pointybeard/jit_image_manipulation.git extensions/jit_image_manipulation
+	git submodule add git://github.com/pointybeard/jit_image_manipulation.git extensions/jit_image_manipulation
 
       
 ### Configuration
