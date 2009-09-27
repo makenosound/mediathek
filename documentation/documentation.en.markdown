@@ -107,7 +107,23 @@ If you like to preview an image or file, just click the plus button on the right
 
 ### Sample Data Source Output
 
-	<data />
+	<data>
+	    <article>
+	        <section id="1" handle="articles">Articles</section>
+	        <entry id="4" comments="0" images="0">
+	            <title handle="an-example-draft-article">An example draft article</title>
+	            <mediathek items="1">
+	                <item>
+	                    <name handle="atasdf">Mediathek test image</name>
+	                    <image size="22 kb" path="" type="image/png">
+	                        <filename>sym_mediathek_test.png</filename>
+	                        <meta creation="2009-09-27T10:09:59+02:00" width="361" height="516" />
+	                    </image>
+	                </item>
+	            </mediathek>
+	        </entry>
+	    </article>
+	</data>
 
 #### Using XSLT to change markup
 
