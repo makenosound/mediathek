@@ -57,7 +57,7 @@ body.mediasection #notice {
 	display: none;
 }
 
-body.mediasection #notice.success, #notice.error {
+body.mediasection #notice.success, body.mediasection #notice.error {
 	display: block;
 	margin: 1em 0 0 0 !important;
 	padding: 0.2em 1em !important;
