@@ -57,6 +57,9 @@
 					if(is_array($field_data)) {
 						$field_value = implode(', ', $field_data);				
 					}
+					elseif(empty($field_data) && $entry_data[$field_id]['file']) {
+						$field_value = $entry_data[$field_id]['file'];
+					}
 					else {
 						$field_value = $field_data;				
 					}
