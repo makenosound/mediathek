@@ -4,7 +4,7 @@
  *
  * @author: Nils Hörrmann, post@nilshoerrmann.de
  * @source: http://github.com/nilshoerrmann/mediathek
- * @version: 2.0
+ * @version: 2.0.1
  */
 
 (function($) {

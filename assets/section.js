@@ -4,16 +4,13 @@
  *
  * @author: Nils Hörrmann, post@nilshoerrmann.de
  * @source: http://github.com/nilshoerrmann/mediathek
- * @version: 2.0
+ * @version: 2.0.1
  */
 
 (function($) {
 
 	// on page load
 	$(function() {
-//		$('select.mediathek option:selected').each(function() {
-//			fieldToggle($(this).parent());
-//		});
 		$('select.mediathek').each(function() {
 			fieldToggle(this);
 		});
