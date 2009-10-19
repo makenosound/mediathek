@@ -360,8 +360,8 @@ var Mediathek;
 				file: '[{@text}]({@path})'
 			},
 			textile: {
-				image: '!{@text}({@path})',
-				file: '"{@text}"({@path})'
+				image: '!{@path}({@text})!',
+				file: '"{@text}":({@path})'		
 			},
 			html: {
 				image: '<img src="{@path}" alt="{@text}" />',
