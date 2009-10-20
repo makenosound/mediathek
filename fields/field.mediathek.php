@@ -363,12 +363,14 @@
 			$currentPageURL = Administration::instance()->getCurrentPageURL();
 			preg_match_all('/\d+/', $currentPageURL, $entry_id, PREG_PATTERN_ORDER);
 			$entry_id = $entry_id[0][count($entry_id[0])-1];
-			$order = Administration::instance()->Database->fetchVar('order', 0,
-				"SELECT `order` 
-				FROM `tbl_fields_mediathek_sorting` 
-				WHERE `entry_id` = " . $entry_id . "
-				LIMIT 1"
-			);
+			if($entry_id) {
+				$order = Administration::instance()->Database->fetchVar('order', 0,
+					"SELECT `order` 
+					FROM `tbl_fields_mediathek_sorting` 
+					WHERE `entry_id` = " . $entry_id . "
+					LIMIT 1"
+				);
+			}
 			$input = Widget::Input('fields[sort_order][' . $entry_id . ']', $order, 'hidden');
 			$label->appendChild($input);
 			
