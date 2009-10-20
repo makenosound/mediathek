@@ -87,7 +87,7 @@
 .field-mediathek i {
 	z-index: 1000;
 	top: -2px;
-	right: 5px;
+	right: -2px;
 }
 
 .field-mediathek i a {
