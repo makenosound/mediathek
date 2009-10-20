@@ -1,7 +1,5 @@
 <?php
 
-	require_once(TOOLKIT . '/class.sectionmanager.php');
-
 	Class extension_mediathek extends Extension {
 	
 		/**
@@ -59,24 +57,15 @@
 		public function __appendAssets($context) {
 			$callback = Administration::instance()->getPageCallback();
 
-			// append javascript for field settings pane
+			// Append javascript for field settings pane
 			if ($callback['driver'] == 'blueprintssections' && is_array($callback['context'])){
 				Administration::instance()->Page->addScriptToHead(URL . '/extensions/mediathek/assets/section.js', 100, false);
 			}
 
-			// append styles and javascript for mediasection display
-			if ($callback['driver'] == 'publish' && $callback['context']['page'] == 'edit'){
-				$sectionManager = new SectionManager($this->_Parent);
-				$section_handle = Administration::instance()->Page->_context['section_handle'];
-				$section_id = $sectionManager->fetchIDFromHandle($section_handle);
-
-				// verifies if current section has a mediathek field
-				$mediathek = Administration::instance()->Database->fetchCol("id", "SELECT id FROM tbl_fields WHERE parent_section = {$section_id} AND type = 'mediathek'");
-
-				if ($mediathek){
+			// Append styles and javascript for mediasection display
+			if ($callback['driver'] == 'publish' && ($callback['context']['page'] == 'edit' || $callback['context']['page'] == 'new')){
 					Administration::instance()->Page->addScriptToHead(URL . '/extensions/mediathek/assets/mediasection.js', 100, false);
 					Administration::instance()->Page->addStylesheetToHead(URL . '/extensions/mediathek/assets/mediasection.css', 'screen', 101, false);
-				}
 			}
 		}
 
