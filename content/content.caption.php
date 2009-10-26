@@ -86,11 +86,12 @@
 		
 		function buildAttachment($file) {
 			$href = URL . '/workspace' . $file;
+			$path = WORKSPACE . $file;
 			$class = 'file';
 			$ext = substr($file, -4);
 			$jit = $width = $height = '0';
 			if(in_array($ext, array('.png', '.jpg', 'jpeg', '.gif'))) {
-				$size = getimagesize($href);
+				$size = getimagesize($path);
 				$width = $size[0];
 				if(empty($width)) $width = '0';
 				$height = $size[1];
