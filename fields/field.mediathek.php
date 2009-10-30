@@ -368,10 +368,11 @@
 					"SELECT `order` 
 					FROM `tbl_fields_mediathek_sorting` 
 					WHERE `entry_id` = " . $entry_id . "
+					AND `field_id` = " . $this->get('id') . "
 					LIMIT 1"
 				);
 			}
-			$input = Widget::Input('fields[sort_order][' . $entry_id . ']', $order, 'hidden');
+			$input = Widget::Input('fields[sort_order][' . $this->get('id') . ']', $order, 'hidden');
 			$label->appendChild($input);
 			
 			// setup relation id
@@ -456,6 +457,9 @@
 		 */
 			
 		public function appendFormattedElement(&$wrapper, $data, $encode = false) {
+		
+			// unify data
+			if(!is_array($data['relation_id'])) $data['relation_id'] = array($data['relation_id']);
 
 			// create Mediathek element
 			$mediathek = new XMLElement($this->get('element_name'));
@@ -477,6 +481,7 @@
 				"SELECT `order` 
 				FROM `tbl_fields_mediathek_sorting` 
 				WHERE `entry_id` = " . $wrapper->getAttribute('id') . "
+				AND `field_id` = " . $this->get('id') . "
 				LIMIT 1"
 			);		
 			$sorted_ids = explode(',', $order);

@@ -2,8 +2,8 @@
 
 Mediathek is the German word for media center. It is an enhancement of a select box field that links entries between sections focussing on connecting media to articles.
 
-- Version: 2.0.2
-- Date: 20th October 2009
+- Version: 2.0.3
+- Date: 30th October 2009
 - Author: Nils Hörrmann, post@nilshoerrmann.de
 - Repository: <http://github.com/nilshoerrmann/mediathek/tree/master>
 - Requirements: Symphony CMS 2.0.6 or newer, <http://github.com/symphony/symphony-2/tree/master>
@@ -18,7 +18,28 @@ This extension contains the following languages:
 
 For further assistence please have a look at the documentation in the `documentation` folder.
 
+### Updating from version 2.0.2 to version 2.0.3
+
+Due to a bug in the Symphony core the update function for extensions is broken. You have to run the following SQL statements replacing `tbl_` with your current database table prefix, e. g. `sym_`:
+
+	ALTER TABLE `tbl_fields_mediathek_sorting`
+		DROP PRIMARY KEY,
+		CHANGE `entry_id` `entry_id` INT(11) NOT NULL,
+		ADD `id` INT(11) NOT NULL,
+		ADD `field_id` INT(11) NOT NULL;
+
+	ALTER TABLE `tbl_fields_mediathek_sorting` 
+		ADD PRIMARY KEY (`id`),
+		CHANGE `id` `id` INT(11) unsigned NOT NULL AUTO_INCREMENT;
+
+**If you have sections with Mediathek fields making use of the ordering feature, you need to manually edit each entry restoring the item order and resaving the entry. Apologies for any inconvenience.**
+
 ### Change Log
+
+Version 2.0.3 - 30th September 2009
+
+- [fixed]	sort order bug with multiple field instances (see update notes above)
+- [fixed]	display issues in Internet Explorer 7 and lower
 
 Version 2.0.2 - 20th September 2009
 

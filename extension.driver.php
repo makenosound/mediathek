@@ -9,8 +9,8 @@
 		public function about() {
 			return array(
 				'name' => 'Field: Mediathek',
-				'version' => '2.0.2',
-				'release-date' => '2009-10-20',
+				'version' => '2.0.3',
+				'release-date' => 'unreleased',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://www.nilshoerrmann.de',
@@ -76,21 +76,21 @@
 		 */
 
 		public function __saveSortOrder($context) {
-			foreach($context['fields']['sort_order'] as $id => $value) {
+			// delete current sort order
+			$entry_id = $context['entry']->_fields['id'];
+			Administration::instance()->Database->query(
+				"DELETE FROM `tbl_fields_mediathek_sorting` WHERE `entry_id` = '$entry_id'"
+			);
+			// add new sort order
+			foreach($context['fields']['sort_order'] as $field_id => $value) {
 				$entries = explode(',', $value);
 				$order = array();
 				foreach($entries as $entry) {
 					$order[] = intval($entry);
 				}
-				// delete current sort order
 				Administration::instance()->Database->query(
-					"DELETE FROM `tbl_fields_mediathek_sorting` WHERE `entry_id` = '$id' LIMIT 1"
-				);
-				// add new sort order
-				Administration::instance()->Database->query(
-					"INSERT INTO `tbl_fields_mediathek_sorting` (`entry_id`, `order`) 
-					VALUES ('$id', '" . implode(',', $order) . "')"
-				);
+					"INSERT INTO `tbl_fields_mediathek_sorting` (`entry_id`, `field_id`, `order`) VALUES ('$entry_id', '$field_id', '" . implode(',', $order) . "')"
+				); 
 			}
 		}
 			
@@ -126,27 +126,45 @@
 			if(version_compare($previousVersion, '1.1', '<')){
 				$updated = Administration::instance()->Database->query(
 					"ALTER TABLE `tbl_fields_mediathek` 
-					ADD `allow_multiple_selection` enum('yes','no') NOT NULL default 'yes', 
-					ADD `filter_tags` text"
+						ADD `allow_multiple_selection` enum('yes','no') NOT NULL default 'yes', 
+						ADD `filter_tags` text"
 				);
 				if(!$updated) return false;
 			}
 			if(version_compare($previousVersion, '2.0', '<')) {
 				$updated = Administration::instance()->Database->query(
 					"ALTER TABLE `tbl_fields_mediathek` 
-					ADD `caption` text, 
-					ADD `included_fields` text, 
-					DROP `related_field_id`, 
-					DROP `related_title_id`, 
-					DROP `show_count`"
+						ADD `caption` text, 
+						ADD `included_fields` text, 
+						DROP `related_field_id`, 
+						DROP `related_title_id`, 
+						DROP `show_count`"
 				);
 				if(!$updated) return false;
 				$updated = Administration::instance()->Database->query(
 					"CREATE TABLE `tbl_fields_mediathek_sorting` (
-						`entry_id` int(11) unsigned NOT NULL,
+						`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+						`entry_id` int(11) NOT NULL,
+						`field_id` ind(11) NOT NULL,
 						`order` text,
-						PRIMARY KEY (`entry_id`)
+						PRIMARY KEY (`id`)
 					);"
+				);
+				if(!$updated) return false;
+			}
+			if(version_compare($previousVersion, '2.0.3', '<')) {
+				$updated = Administration::instance()->Database->query(
+					"ALTER TABLE `tbl_fields_mediathek_sorting`
+						DROP PRIMARY KEY,
+						CHANGE `entry_id` `entry_id` INT(11) NOT NULL,
+						ADD `id` INT(11) NOT NULL,
+						ADD `field_id` INT(11) NOT NULL"
+				);
+				if(!$updated) return false;
+				$updated = Administration::instance()->Database->query(
+					"ALTER TABLE `tbl_fields_mediathek_sorting` 
+						ADD PRIMARY KEY (`id`),
+						CHANGE `id` `id` INT(11) unsigned NOT NULL AUTO_INCREMENT"
 				);
 				if(!$updated) return false;
 			}
@@ -163,7 +181,7 @@
 			// Create database table and fields.
 			$fields = Administration::instance()->Database->query(
 				"CREATE TABLE `tbl_fields_mediathek` (
-					`id` int(11) unsigned NOT NULL auto_increment,
+					`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 					`field_id` int(11) unsigned NOT NULL,
 					`related_section_id` VARCHAR(255) NOT NULL,
 					`filter_tags` text,
@@ -176,9 +194,11 @@
 			);
 			$sorting = Administration::instance()->Database->query(
 				"CREATE TABLE `tbl_fields_mediathek_sorting` (
-					`entry_id` int(11) unsigned NOT NULL,
+					`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+					`entry_id` int(11) NOT NULL,
+					`field_id` int(11) NOT NULL,
 					`order` text,
-					PRIMARY KEY (`entry_id`)
+					PRIMARY KEY (`id`)
 				)"
 			);
 			if($fields && $sorting) return true;
