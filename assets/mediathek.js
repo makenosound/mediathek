@@ -150,7 +150,7 @@ var Mediathek;
 			NEW: 'New Entry #',
 			RESET: 'Reset',
 			RESETENTRY: 'Reset this entry',
-			SEARCH: 'type and search',
+			SEARCH: 'type and search'
 		},
 		
 		autodiscover: function() {

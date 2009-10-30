@@ -27,7 +27,7 @@
 			$('div.actions button').click(function(event) {
 				event.preventDefault();
 				iframe.animate({
-					'opacity': 0.01,
+					'opacity': 0.01
 				}, 250, function() {
 					window.location.reload();				
 				});
@@ -35,7 +35,7 @@
 			// hide iframe while page is loading
 			$('form').submit(function() {
 				iframe.animate({
-					'opacity': 0.01,
+					'opacity': 0.01
 				}, 250);
 			});
 			// show iframe when new page is loaded
