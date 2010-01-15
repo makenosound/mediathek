@@ -182,7 +182,7 @@
 	background: url(attachment1s.png) right center no-repeat;
 }
 
-.preview {
+.field-mediathek .preview {
 	position: absolute;
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.8);
@@ -194,7 +194,7 @@
 	margin: 0;
 }
 
-.preview .close {
+.field-mediathek .preview .close {
 	background: url(close0.png) 0 0 no-repeat;
 	width: 18px;
 	height: 18px;
@@ -205,11 +205,11 @@
 	text-indent: -1000em;
 }
 
-.preview .close:hover {
+.field-mediathek .preview .close:hover {
 	background: url(close1.png) 0 0 no-repeat;
 }
 
-.preview p {
+.field-mediathek .preview p {
 	color: #fff;
 	text-align: center;
 	font-size: 127.28%;
@@ -219,20 +219,20 @@
 	width: 100%;
 }
 
-.preview p a {
+.field-mediathek .preview p a {
 	color: #fff;
 	text-decoration: none;
 }
 
-.preview p a:hover span {
+.field-mediathek .preview p a:hover span {
 	text-decoration: underline;
 }
 
-.preview p a span {
+.field-mediathek .preview p a span {
 	font-size: 78.5%;
 }
 
-.preview a.file {
+.field-mediathek .preview a.file {
 	background: url(file.png) center top no-repeat;
 	width: 100%;
 	height: 80px;
@@ -249,7 +249,7 @@
 	color: #d6d6c7;
 }
 
-.preview a.image {
+.field-mediathek .preview a.image {
 	width: 90%;
 	text-align: center;
 	margin: 30px 5% 0 5%;
@@ -258,7 +258,7 @@
 	display: block;
 }
 
-.preview a.image img {
+.field-mediathek .preview a.image img {
 	border: 1px solid #bcbcbc;
 	box-shadow: -1px 2px 3px #454444;
 }
