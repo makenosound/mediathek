@@ -9,13 +9,25 @@
 		public function about() {
 			return array(
 				'name' => 'Field: Mediathek',
+				'type' => 'Field, Interface',
 				'version' => '2.0.4',
 				'release-date' => '2010-01-15',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://www.nilshoerrmann.de',
 					'email' => 'post@nilshoerrmann.de'
-				)
+				),
+				'description' => 'A media center for Symphony',
+				'compatibility' => array(
+	                '2.0.0' => false,
+	                '2.0.1' => false,
+	                '2.0.2' => false,
+	                '2.0.3' => true,
+	                '2.0.4' => true,
+	                '2.0.5' => true,
+	                '2.0.6' => true,
+	                '2.0.7' => true
+	            )
 			);
 		}
 
