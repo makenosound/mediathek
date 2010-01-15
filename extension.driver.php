@@ -1,11 +1,11 @@
 <?php
 
 	Class extension_mediathek extends Extension {
-	
+
 		/**
 		 * Extension information
 		 */
-		 
+
 		public function about() {
 			return array(
 				'name' => 'Field: Mediathek',
@@ -18,7 +18,7 @@
 				)
 			);
 		}
-	
+
 		/**
 		 * Add callback functions to backend delegates
 		 */
@@ -47,11 +47,11 @@
 				)
 			);
 		}
-	
+
 		/**
 		 * Append assets to the page head
 		 *
-		 * @param object $context 
+		 * @param object $context
 		 */
 
 		public function __appendAssets($context) {
@@ -72,72 +72,74 @@
 		/**
 		 * Saves sort order of the field
 		 *
-		 * @param object $context 
+		 * @param object $context
 		 */
 
 		public function __saveSortOrder($context) {
-			// delete current sort order
-			$entry_id = $context['entry']->_fields['id'];
-			Administration::instance()->Database->query(
-				"DELETE FROM `tbl_fields_mediathek_sorting` WHERE `entry_id` = '$entry_id'"
-			);
-			// add new sort order
-			foreach($context['fields']['sort_order'] as $field_id => $value) {
-				$entries = explode(',', $value);
-				$order = array();
-				foreach($entries as $entry) {
-					$order[] = intval($entry);
-				}
+			if(!is_null($context['fields']['sort_order'])) {
+				// delete current sort order
+				$entry_id = $context['entry']->_fields['id'];
 				Administration::instance()->Database->query(
-					"INSERT INTO `tbl_fields_mediathek_sorting` (`entry_id`, `field_id`, `order`) VALUES ('$entry_id', '$field_id', '" . implode(',', $order) . "')"
-				); 
+					"DELETE FROM `tbl_fields_mediathek_sorting` WHERE `entry_id` = '$entry_id'"
+				);
+				// add new sort order
+				foreach($context['fields']['sort_order'] as $field_id => $value) {
+					$entries = explode(',', $value);
+					$order = array();
+					foreach($entries as $entry) {
+						$order[] = intval($entry);
+					}
+					Administration::instance()->Database->query(
+						"INSERT INTO `tbl_fields_mediathek_sorting` (`entry_id`, `field_id`, `order`) VALUES ('$entry_id', '$field_id', '" . implode(',', $order) . "')"
+					);
+				}
 			}
 		}
-			
+
 		/**
 		 * Delete sort order of the field
 		 *
-		 * @param object $context 
+		 * @param object $context
 		 */
 
 		public function __deleteSortOrder($context) {
 			// DELEGATE NOT WORKING:
 			// http://github.com/symphony/symphony-2/issues#issue/108
 		}
-	
+
 		/**
 		 * Function to be executed on uninstallation
 		 */
-	
+
 		public function uninstall() {
 			// drop database table
 			Administration::instance()->Database->query("DROP TABLE `tbl_fields_mediathek`");
 			Administration::instance()->Database->query("DROP TABLE `tbl_fields_mediathek_sorting`");
 		}
-	
+
 		/**
 		 * Function to be executed if the extension has been updated
 		 *
 		 * @param string $previousVersion - version number of the currently installed extension build
 		 * @return boolean - true on success, false otherwise
 		 */
-		
+
 		public function update($previousVersion) {
 			if(version_compare($previousVersion, '1.1', '<')){
 				$updated = Administration::instance()->Database->query(
-					"ALTER TABLE `tbl_fields_mediathek` 
-						ADD `allow_multiple_selection` enum('yes','no') NOT NULL default 'yes', 
+					"ALTER TABLE `tbl_fields_mediathek`
+						ADD `allow_multiple_selection` enum('yes','no') NOT NULL default 'yes',
 						ADD `filter_tags` text"
 				);
 				if(!$updated) return false;
 			}
 			if(version_compare($previousVersion, '2.0', '<')) {
 				$updated = Administration::instance()->Database->query(
-					"ALTER TABLE `tbl_fields_mediathek` 
-						ADD `caption` text, 
-						ADD `included_fields` text, 
-						DROP `related_field_id`, 
-						DROP `related_title_id`, 
+					"ALTER TABLE `tbl_fields_mediathek`
+						ADD `caption` text,
+						ADD `included_fields` text,
+						DROP `related_field_id`,
+						DROP `related_title_id`,
 						DROP `show_count`"
 				);
 				if(!$updated) return false;
@@ -162,7 +164,7 @@
 				);
 				if(!$updated) return false;
 				$updated = Administration::instance()->Database->query(
-					"ALTER TABLE `tbl_fields_mediathek_sorting` 
+					"ALTER TABLE `tbl_fields_mediathek_sorting`
 						ADD PRIMARY KEY (`id`),
 						CHANGE `id` `id` INT(11) unsigned NOT NULL AUTO_INCREMENT"
 				);
@@ -170,13 +172,13 @@
 			}
 			return true;
 		}
-	
+
 		/**
 		 * Function to be executed on installation.
 		 *
 		 * @return boolean - true on success, false otherwise
 		 */
-	
+
 		public function install() {
 			// Create database table and fields.
 			$fields = Administration::instance()->Database->query(
@@ -185,8 +187,8 @@
 					`field_id` int(11) unsigned NOT NULL,
 					`related_section_id` VARCHAR(255) NOT NULL,
 					`filter_tags` text,
-					`caption` text, 
-					`included_fields` text, 
+					`caption` text,
+					`included_fields` text,
 					`allow_multiple_selection` enum('yes','no') NOT NULL default 'yes',
         	  		PRIMARY KEY  (`id`),
 			  		KEY `field_id` (`field_id`)
@@ -204,5 +206,5 @@
 			if($fields && $sorting) return true;
 			else return false;
 		}
-		
+
 	}
