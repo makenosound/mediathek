@@ -9,8 +9,8 @@
 		public function about() {
 			return array(
 				'name' => 'Field: Mediathek',
-				'version' => '2.0.3',
-				'release-date' => 'unreleased',
+				'version' => '2.0.4',
+				'release-date' => '2010-01-15',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://www.nilshoerrmann.de',
