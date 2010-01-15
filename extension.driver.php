@@ -19,15 +19,15 @@
 				),
 				'description' => 'A media center for Symphony',
 				'compatibility' => array(
-	                '2.0.0' => false,
-	                '2.0.1' => false,
-	                '2.0.2' => false,
-	                '2.0.3' => true,
-	                '2.0.4' => true,
-	                '2.0.5' => true,
-	                '2.0.6' => true,
-	                '2.0.7' => true
-	            )
+					'2.0.0' => false,
+					'2.0.1' => false,
+					'2.0.2' => false,
+					'2.0.3' => true,
+					'2.0.4' => true,
+					'2.0.5' => true,
+					'2.0.6' => true,
+					'2.0.7' => true
+				)
 			);
 		}
 
@@ -202,7 +202,7 @@
 					`caption` text,
 					`included_fields` text,
 					`allow_multiple_selection` enum('yes','no') NOT NULL default 'yes',
-        	  		PRIMARY KEY  (`id`),
+			  		PRIMARY KEY  (`id`),
 			  		KEY `field_id` (`field_id`)
 				)"
 			);
