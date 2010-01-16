@@ -2,8 +2,8 @@
 
 Mediathek is the German word for media center. It is an enhancement of a select box field that links entries between sections focussing on connecting media to articles.
 
-- Version: 2.0.4
-- Date: 15th January 2010
+- Version: 2.1dev
+- Date: **UNRELEASED**
 - Author: Nils Hörrmann, post@nilshoerrmann.de
 - Repository: <http://github.com/nilshoerrmann/mediathek/tree/master>
 - Requirements: Symphony CMS 2.0.6 or newer, <http://github.com/symphony/symphony-2/tree/master>
