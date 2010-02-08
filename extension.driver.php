@@ -10,8 +10,8 @@
 			return array(
 				'name' => 'Mediathek',
 				'type' => 'Field, Interface',
-				'version' => '2.0.4',
-				'release-date' => '2010-01-15',
+				'version' => '2.0.5',
+				'release-date' => '2010-02-07',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://www.nilshoerrmann.de',
