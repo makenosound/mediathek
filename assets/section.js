@@ -10,6 +10,9 @@
 
 	// on page load
 	$(function() {
+		$('select.mediathek').each(function() {
+		        fieldToggle(this);
+		});		
 		$('select.mediathek').live('change', function() {
 			fieldToggle(this);
 		});
