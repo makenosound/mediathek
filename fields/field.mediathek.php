@@ -94,20 +94,22 @@
 				foreach($sections as $section) {
 					$values = array();
 					$fields = $section->fetchFields();
-					foreach($fields as $field) {
-						if($field->get('type') == 'taglist' || $field->get('type') == 'select' ) {
-							// fetch dynamic filter values
-							$entries = $this->Database->fetch(
-								"SELECT DISTINCT `value` FROM `tbl_entries_data_" . $field->get('id') . "` LIMIT 100"
-							);
-							foreach($entries as $entry) {
-								$values[] = $entry['value'];
+					if(is_array($fields)) {
+						foreach($fields as $field) {
+							if($field->get('type') == 'taglist' || $field->get('type') == 'select' ) {
+								// fetch dynamic filter values
+								$entries = $this->Database->fetch(
+									"SELECT DISTINCT `value` FROM `tbl_entries_data_" . $field->get('id') . "` LIMIT 100"
+								);
+								foreach($entries as $entry) {
+									$values[] = $entry['value'];
+								}
+								// get static values
+								$static = explode(', ', $field->get('static_options'));
+								// combine dynamic and static values
+								$values = array_unique(array_merge($values, $static));
+								natcasesort($values);
 							}
-							// get static values
-							$static = explode(', ', $field->get('static_options'));
-							// combine dynamic and static values
-							$values = array_unique(array_merge($values, $static));
-							natcasesort($values);
 						}
 					}
 					if(!empty($values)) {
@@ -137,8 +139,10 @@
 				foreach($sections as $section) {
 					$values = array();
 					$fields = $section->fetchFields();
-					foreach($fields as $field) {
-						$values[] = '{$' . $field->get('element_name') . '}';
+					if(is_array($fields)) {
+						foreach($fields as $field) {
+							$values[] = '{$' . $field->get('element_name') . '}';
+						}
 					}
 					if(!empty($values)) {
 						$filter = new XMLElement('ul', NULL, array('class' => 'tags mediathek inline section' . $section->get('id'), 'style' => 'display: none;'));
