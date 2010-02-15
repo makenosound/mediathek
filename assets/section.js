@@ -11,16 +11,16 @@
 	// on page load
 	$(function() {
 		$('select.mediathek').each(function() {
-			fieldToggle(this);
-		});
+		        fieldToggle(this);
+		});		
 		$('select.mediathek').live('change', function() {
 			fieldToggle(this);
 		});
-		$('.actions a').click(function() {
+		$('div.controls a').click(function() {
 			fieldToggle($('select.mediathek:last'));
 		});
 	});
-	
+
 	// show and hide suggestion lists
 	function fieldToggle(select) {
 		var $select = $(select),
@@ -28,10 +28,10 @@
 			mediathek = $select.parents('li').filter('li'),
 			groups = mediathek.find('select.datasource optgroup'),
 			filter = mediathek.find('ul.negation.section' + id);
-			
+
 		// reset mediathek height
 		mediathek.css('height', 'auto');
-		
+
 		// show and hide filter and filter suggestions
 		if(filter.length > 0) {
 			mediathek.find('label.filter').show();
@@ -42,10 +42,10 @@
 			mediathek.find('label.filter').hide();
 			mediathek.find('ul.negation').hide();
 		}
-		
+
 		// show and hide caption suggestions
 		mediathek.find('ul.inline').hide().filter('.section' + id).show();
-			
+
 		// show and hide data source sections
 		if(groups.length > 0) {
 			groups.each(function() {
@@ -66,20 +66,20 @@
 			$('ul.mediathek.negation li').each(function() {
 				var tag = $(this);
 				if(tag.text().substr(0, 1) != '-') {
-					tag.html('-' + tag.text());			
+					tag.html('-' + tag.text());
 				}
 			});
 		}
     });
-    
+
 	// remove negation signs for all suggestions on keyup
 	$(window).keyup(function(event) {
 		$('ul.mediathek li').each(function() {
 			var tag = $(this);
 			if(tag.text().substr(0, 1) == '-') {
-				tag.html(tag.text().substr(1));			
+				tag.html(tag.text().substr(1));
 			}
 		});
 	});
-			
+
 })(jQuery.noConflict());
