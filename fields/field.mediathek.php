@@ -266,7 +266,7 @@
 		function displayPublishPanel(&$wrapper, $data=NULL, $flagWithError=NULL, $fieldnamePrefix=NULL, $fieldnamePostfix=NULL) {
 
 			$this->_engine->Page->addScriptToHead(URL . '/extensions/mediathek/assets/jquery-ui.js', 100, false);
-			$this->_engine->Page->addScriptToHead(URL . '/extensions/mediathek/assets/mediathek.js', 101, false);
+			$this->_engine->Page->addScriptToHead(URL . '/extensions/mediathek/assets/symphony.mediathek.js', 101, false);
 			$this->_engine->Page->addScriptToHead(URL . '/extensions/mediathek/assets/quicksilver.js', 102, false);
 			$this->_engine->Page->addStylesheetToHead(URL . '/extensions/mediathek/assets/mediathek.css', 'screen', 103, false);
 

@@ -164,22 +164,22 @@
 	position: absolute;
 	right: 10px;
 	top: 6px;
-	background: url(attachment0.png) right center no-repeat;
+	background: url(images/attachment0.png) right center no-repeat;
 	width: 18px;
 	height: 18px;
 	text-indent: -1000em;
 }
 
 .field-mediathek li a.attachment:hover {
-	background: url(attachment1.png) right center no-repeat;
+	background: url(images/attachment1.png) right center no-repeat;
 }
 
 .field-mediathek .open li.selected a.attachment {
-	background: url(attachment0s.png) right center no-repeat;
+	background: url(images/attachment0s.png) right center no-repeat;
 }
 
 .field-mediathek .open li.selected a.attachment:hover {
-	background: url(attachment1s.png) right center no-repeat;
+	background: url(images/attachment1s.png) right center no-repeat;
 }
 
 .field-mediathek .preview {
@@ -195,7 +195,7 @@
 }
 
 .field-mediathek .preview .close {
-	background: url(close0.png) 0 0 no-repeat;
+	background: url(images/close0.png) 0 0 no-repeat;
 	width: 18px;
 	height: 18px;
 	position: absolute;
@@ -206,7 +206,7 @@
 }
 
 .field-mediathek .preview .close:hover {
-	background: url(close1.png) 0 0 no-repeat;
+	background: url(images/close1.png) 0 0 no-repeat;
 }
 
 .field-mediathek .preview p {
@@ -233,7 +233,7 @@
 }
 
 .field-mediathek .preview a.file {
-	background: url(file.png) center top no-repeat;
+	background: url(images/file.png) center top no-repeat;
 	width: 100%;
 	height: 80px;
 	display: block;
@@ -264,7 +264,7 @@
 }
 
 div.overlay {
-	background: #353530 url(drop.png) center no-repeat;
+	background: #353530 url(images/drop.png) center no-repeat;
 	opacity: 0.8;
 	color: fff;
 	border:  1px solid #000;
@@ -279,14 +279,14 @@ li.move {
 }
 
 li.move a.attachment {
-	background: url(attachment1.png) right center no-repeat;
+	background: url(images/attachment1.png) right center no-repeat;
 }
 
 .field-mediathek div.create {
 	border-top: 1px solid #C2C2C2;
 	border-left: 1px solid #d3d3d3;
 	border-right: 1px solid #d3d3d3;
-	background: rgb(230, 230, 229) url(loading.gif) center no-repeat;
+	background: rgb(230, 230, 229) url(images/loading.gif) center no-repeat;
 	width: 100%;
 }
 
