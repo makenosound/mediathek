@@ -508,6 +508,7 @@
 
 				// create entry element
 				$item = new XMLElement('item');
+				$item->setAttribute('id', $entry->_fields['id']);
 				// populate entry element
 				$included_fields = explode(',', $this->get('included_fields'));
 				foreach ($entry_data as $field_id => $values) {
